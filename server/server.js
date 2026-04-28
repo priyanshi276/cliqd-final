@@ -58,3 +58,15 @@ app.use((err, _req, res, _next) => {
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`🚀  Server running on http://localhost:${PORT}`));
+
+
+const path = require('path');
+
+// Pehle se existing code ke neeche, routes ke baad yeh add karo:
+
+// Serve React frontend in production
+app.use(express.static(path.join(__dirname, '../dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist', 'index.html'));
+});
