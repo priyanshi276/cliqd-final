@@ -7,19 +7,19 @@ require('dotenv').config();
 const app = express();
 
 // ── Middleware ──────────────────────────────────────────────────────────────
-// app.use(cors({
-//   origin: process.env.CLIENT_URL || 'http://localhost:3000',
-//   credentials: true
-// }));
 app.use(cors({
-  // origin: [
-  //   "http://localhost:3000",
-  //   "https://cliqd-final.vercel.app"
-  // ],
-  // NAYA
-origin: ['http://localhost:3000', 'https://cliqd-final-production.up.railway.app'],
+  origin: process.env.CLIENT_URL || 'http://localhost:3000',
   credentials: true
 }));
+// app.use(cors({
+//   // origin: [
+//   //   "http://localhost:3000",
+//   //   "https://cliqd-final.vercel.app"
+//   // ],
+//   // NAYA
+// origin: ['http://localhost:3000', 'https://cliqd-final-production.up.railway.app'],
+//   credentials: true
+// }));
 app.use(express.json({ limit: '20mb' }));       // allow base64 images
 app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 
@@ -60,13 +60,13 @@ const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`🚀  Server running on http://localhost:${PORT}`));
 
 
-const path = require('path');
+// const path = require('path');
 
-// Pehle se existing code ke neeche, routes ke baad yeh add karo:
+// // Pehle se existing code ke neeche, routes ke baad yeh add karo:
 
-// Serve React frontend in production
-app.use(express.static(path.join(__dirname, '../dist')));
+// // Serve React frontend in production
+// app.use(express.static(path.join(__dirname, '../dist')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../dist', 'index.html'));
+// });
