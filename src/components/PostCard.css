@@ -1,0 +1,67 @@
+.post-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s; margin-bottom: 20px;
+}
+.post-card:hover { border-color: rgba(59,130,246,0.3); }
+
+.post-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+.post-user { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.post-avatar { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; background: var(--bg3); border: 2px solid var(--border); transition: border-color 0.2s; }
+.post-user:hover .post-avatar { border-color: var(--accent2); }
+.post-username { display: block; font-weight: 600; font-size: 0.9rem; color: var(--text); font-family: var(--font-display); }
+.post-time { display: block; font-size: 0.75rem; color: var(--text3); }
+.post-header-actions { display: flex; align-items: center; gap: 8px; }
+
+.tag-toggle-btn { display: flex; align-items: center; gap: 5px; padding: 6px 12px; background: var(--bg3); border: 1px solid var(--border); color: var(--text2); border-radius: 50px; font-size: 0.8rem; transition: all 0.2s; }
+.tag-toggle-btn:hover, .tag-toggle-btn.active { background: var(--accent-light); border-color: var(--accent2); color: var(--accent2); }
+.delete-btn { padding: 7px; border-radius: 8px; color: var(--text3); transition: all 0.2s; }
+.delete-btn:hover { color: var(--danger); background: rgba(248,113,113,0.1); }
+
+.post-media-wrap { position: relative; width: 100%; background: var(--bg); overflow: hidden; max-height: 600px; }
+.post-media { width: 100%; max-height: 600px; object-fit: cover; display: block; }
+.video-container { position: relative; cursor: pointer; }
+.play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+.reel-badge { position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, rgba(37,99,235,0.9), rgba(99,102,241,0.9)); color: white; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 50px; backdrop-filter: blur(8px); }
+
+.tag-dot { position: absolute; transform: translate(-50%,-50%); width: 28px; height: 28px; border-radius: 50%; background: rgba(37,99,235,0.25); border: 2px solid var(--accent2); display: flex; align-items: center; justify-content: center; cursor: pointer; animation: tagPop 0.35s cubic-bezier(0.34,1.56,0.64,1) both; backdrop-filter: blur(4px); z-index: 5; }
+.tag-dot-inner { width: 8px; height: 8px; border-radius: 50%; background: var(--accent2); animation: pulse 2s ease-in-out infinite; }
+
+.tag-popup { position: absolute; z-index: 10; background: rgba(12,15,26,0.97); border: 1px solid var(--accent); border-radius: 12px; padding: 12px 14px; min-width: 160px; backdrop-filter: blur(20px); animation: fadeIn 0.2s ease both; box-shadow: 0 8px 32px rgba(37,99,235,0.2); }
+.tag-popup-name { display: block; font-weight: 600; font-size: 0.88rem; color: var(--text); margin-bottom: 4px; }
+.tag-popup-price { display: block; font-size: 0.82rem; color: var(--accent3); font-weight: 500; margin-bottom: 8px; }
+
+.tag-popup-shop-btn { display: flex; align-items: center; gap: 6px; width: 100%; margin-top: 8px; padding: 8px 12px; background: linear-gradient(135deg, var(--accent), var(--indigo)); color: white; border: none; border-radius: 8px; font-size: 0.8rem; font-weight: 700; font-family: var(--font-display); cursor: pointer; transition: all 0.2s; justify-content: center; letter-spacing: 0.02em; }
+.tag-popup-shop-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px var(--accent-glow); }
+
+.post-actions { padding: 12px 16px 8px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.like-btn { display: flex; align-items: center; gap: 6px; color: var(--text2); font-size: 0.9rem; padding: 6px 12px; border-radius: 50px; background: var(--bg3); border: 1px solid var(--border); transition: all 0.2s; }
+.like-btn:hover { color: var(--pink); border-color: var(--pink); }
+.like-btn.liked { color: var(--pink); border-color: rgba(244,114,182,0.3); background: rgba(244,114,182,0.08); }
+.like-btn.liked svg { animation: pulse 0.4s ease; }
+
+.post-tags-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.post-tag-chip { display: flex; align-items: center; gap: 5px; padding: 4px 10px; background: var(--accent-light); border: 1px solid rgba(59,130,246,0.25); border-radius: 50px; font-size: 0.75rem; color: var(--accent3); font-weight: 500; }
+.chip-price { color: var(--text3); font-size: 0.7rem; }
+.post-tag-chip.more { color: var(--text3); background: var(--bg3); border-color: var(--border); }
+.post-tag-chip.clickable { cursor: pointer; transition: all 0.2s; border: 1px solid rgba(59,130,246,0.25); font-family: var(--font-body); }
+.post-tag-chip.clickable:hover { background: rgba(59,130,246,0.15); border-color: var(--accent2); color: var(--text); transform: translateY(-1px); }
+
+.post-caption { padding: 4px 16px 14px; font-size: 0.9rem; color: var(--text2); line-height: 1.55; }
+.caption-user { font-weight: 600; color: var(--text); cursor: pointer; font-family: var(--font-display); }
+.caption-user:hover { color: var(--accent2); }
+
+/* ── Light theme ── */
+[data-theme="light"] .post-card { background: #ffffff; border-color: #d0d9f0; }
+[data-theme="light"] .post-card:hover { border-color: rgba(37,99,235,0.3); }
+[data-theme="light"] .post-header { background: #fff; }
+[data-theme="light"] .tag-toggle-btn { background: #f0f4ff; border-color: #d0d9f0; color: #334155; }
+[data-theme="light"] .tag-toggle-btn:hover, [data-theme="light"] .tag-toggle-btn.active { background: var(--accent-light); border-color: var(--accent2); color: var(--accent2); }
+[data-theme="light"] .post-media-wrap { background: #e8edf8; }
+[data-theme="light"] .tag-popup { background: rgba(255,255,255,0.97); border-color: var(--accent2); box-shadow: 0 8px 32px rgba(37,99,235,0.15); }
+[data-theme="light"] .tag-popup-name { color: #0f172a; }
+[data-theme="light"] .like-btn { background: #f0f4ff; border-color: #d0d9f0; color: #334155; }
+[data-theme="light"] .like-btn:hover { color: var(--pink); border-color: var(--pink); background: rgba(244,114,182,0.06); }
+[data-theme="light"] .like-btn.liked { background: rgba(244,114,182,0.08); }
+[data-theme="light"] .post-tag-chip { background: var(--accent-light); border-color: rgba(37,99,235,0.2); color: var(--accent2); }
+[data-theme="light"] .post-tag-chip.more { background: #f0f4ff; border-color: #d0d9f0; color: #94a3b8; }
+[data-theme="light"] .post-caption { color: #334155; }
